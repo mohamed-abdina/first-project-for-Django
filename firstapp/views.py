@@ -12,6 +12,7 @@ def hello_world(request):
 
 
 def reservation(request):
+
     form = ReservationForm()
 
     if request.method == 'POST':
