@@ -1,20 +1,16 @@
 from django.db import models
 
+class Appointment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
 
-class Menu(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.IntegerField()
+    appointment_date = models.DateField()
+    appointment_time = models.TimeField()
+
+    service = models.CharField(max_length=100)
+
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
-
-
-class Reservation(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    guest_count = models.IntegerField()
-    reservation_time = models.DateField(auto_now=True)
-    comments = models.CharField(max_length=1000)
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"

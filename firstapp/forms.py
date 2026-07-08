@@ -1,9 +1,15 @@
 from django import forms
-from .models import Reservation
+from .models import Appointment
 
-
-class ReservationForm(forms.ModelForm):
+class AppointmentForm(forms.ModelForm):
 
     class Meta:
-        model = Reservation
-        fields = '__all__'
+        model = Appointment
+        fields = [
+            'name',
+            'email',
+            'phone',
+            'appointment_date',
+            'appointment_time',
+            'service'
+        ]

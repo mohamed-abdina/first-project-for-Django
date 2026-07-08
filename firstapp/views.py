@@ -1,25 +1,33 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .forms import ReservationForm
+from django.shortcuts import render, redirect
+from .forms import AppointmentForm
 
 
-def home(request):
-    return HttpResponse("Home Page")
-
-
-def hello_world(request):
-    return HttpResponse("Hello World")
-
-
-def reservation(request):
-
-    form = ReservationForm()
+def appointment(request):
 
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
+
+        form = AppointmentForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return HttpResponse("Success")
 
-    return render(request, 'reservation.html', {'form': form})
+            form.save()
+
+            return redirect('success')
+
+    else:
+
+        form = AppointmentForm()
+
+    return render(
+        request,
+        'appointment.html',
+        {'form': form}
+    )
+
+
+def success(request):
+
+    return render(
+        request,
+        'success.html'
+    )

@@ -1,8 +1,18 @@
 from django.urls import path
-from . import views
+from .views import appointment, success
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('function/', views.hello_world, name='hello_world'),
-    path('reservation/', views.reservation, name='reservation'),
+
+    path(
+        '',
+        appointment,
+        name='appointment'
+    ),
+
+    path(
+        'success/',
+        success,
+        name='success'
+    ),
+
 ]
